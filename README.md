@@ -21,3 +21,14 @@ is open
 • For storage, the solution is free, you can choose to store in a local database of the SQLlite type,
 store in a database hosted by a cloud provider or save the items locally as a pickle.
 
+### Requirements
+Please install the following libraries
+1. Python 3
+2. Django
+3. Django Rest Framework
+
+### Run Web App
+After installing the dependencies, run the following commands
+1. python manage.py makemigrations
+2. python manage.py migrate
+3. python manage.py runserver
