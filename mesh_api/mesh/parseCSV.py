@@ -64,7 +64,7 @@ def parse_csv_file(filename):
                         mesh_dict.update({headers[i]: mesh[i].upper()})
                 elif headers[i] == 'is_compat_interior_wall':
                     if mesh[i] == '':
-                        errors.append[f'Please set a True or False value for the field: <{headers[i]}> for mesh item {csv_reader.line_num -1 }']
+                        errors.append(f'Please set a True or False value for the field: <{headers[i]}> for mesh item {csv_reader.line_num -1 }')
                         encountered_error = True
                     elif checkBooleanValue(mesh[i]):
                         if mesh[i].lower() == 'true':
@@ -72,7 +72,7 @@ def parse_csv_file(filename):
                         else:
                             mesh_dict.update({headers[i]: False})
                     else:
-                        errors.append[f'Please set a True or False value for the field: <{headers[i]}> for mesh item {csv_reader.line_num -1 }']
+                        errors.append(f'Please set a True or False value for the field: <{headers[i]}> for mesh item {csv_reader.line_num -1 }')
                         encountered_error = True
                 elif headers[i] in ['mass_surf', 'mesh_height', 'mesh_width']:
                     if checkNumber(mesh[i]) and checkGreaterThanZero(mesh[i]):
