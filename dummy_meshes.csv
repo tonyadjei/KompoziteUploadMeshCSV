@@ -1,0 +1,4 @@
+﻿id;name;is_compat_interior_wall;mesh_width;mesh_height;mass_surf;mass_comb;trame;roll_pallet;color_names
+variant_67;R 131 A102 C+;FALSE;3.5;3.8;0.16;8.17;T2 Ra1 M4 E3;33;darkgrey
+variant_43;R 131 A102 C+;FALSE;3.5;3.8;0.16;8.17;T2 Ra1 M4 E3;33;darkgrey
+variant_26;R 131 A102 C+;FALSE;3.5;3.8;0.16;8.17;T2 Ra1 M4 E3;33;darkgrey
