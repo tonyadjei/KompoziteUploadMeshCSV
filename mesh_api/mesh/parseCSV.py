@@ -63,19 +63,22 @@ def parse_csv_file(filename):
                     else:
                         mesh_dict.update({headers[i]: mesh[i].upper()})
                 elif headers[i] == 'is_compat_interior_wall':
-                    if checkBooleanValue(mesh[i]):
+                    if mesh[i] == '':
+                        errors.append[f'Please set a True or False value for the field: <{headers[i]}> for mesh item {csv_reader.line_num -1 }']
+                        encountered_error = True
+                    elif checkBooleanValue(mesh[i]):
                         if mesh[i].lower() == 'true':
                             mesh_dict.update({headers[i]: True})
                         else:
                             mesh_dict.update({headers[i]: False})
                     else:
-                        errors.append[f'Please set a True or False value for the field: <{headers[i]}> for mesh item {csv_reader.line_num -1}']
+                        errors.append[f'Please set a True or False value for the field: <{headers[i]}> for mesh item {csv_reader.line_num -1 }']
                         encountered_error = True
                 elif headers[i] in ['mass_surf', 'mesh_height', 'mesh_width']:
                     if checkNumber(mesh[i]) and checkGreaterThanZero(mesh[i]):
                         mesh_dict.update({headers[i]: makeFloat(mesh[i])})
                     else:
-                        errors.append(f'Please set an integer or decimal value greater than zero for the field: <{headers[i]}> for mesh item {csv_reader.line_num -1}')
+                        errors.append(f'Please set an integer or decimal value greater than zero for the field: <{headers[i]}> for mesh item {csv_reader.line_num -1 }')
                         encountered_error = True
                 elif headers[i] == 'mass_comb':
                     if mesh[i] == '':
@@ -83,7 +86,7 @@ def parse_csv_file(filename):
                     elif checkNumber(mesh[i]):
                         mesh_dict.update({headers[i]: makeFloat(mesh[i])})
                     else:
-                        errors.append(f'Please set an integer or decimal value for the field <{headers[i]}> for mesh item {csv_reader.line_num -1}')
+                        errors.append(f'Please set an integer or decimal value for the field <{headers[i]}> for mesh item {csv_reader.line_num -1 }')
                         encountered_error = True
                 elif headers[i] == 'roll_pallet':
                     if mesh[i] == '':
@@ -91,7 +94,7 @@ def parse_csv_file(filename):
                     elif checkNumber(mesh[i]):
                         mesh_dict.update({headers[i]: makeInteger(mesh[i])})
                     else:
-                        errors.append(f'Please set an integer value for the field <{headers[i]}> for mesh item {csv_reader.line_num -1}')
+                        errors.append(f'Please set an integer value for the field <{headers[i]}> for mesh item {csv_reader.line_num -1 }')
                         encountered_error = True
                 elif headers[i] == 'trame':
                     if checkTrame(mesh[i]):
@@ -103,13 +106,13 @@ def parse_csv_file(filename):
                             mesh_dict.update({headers[i]: '3'})
                     else:
                         value_list = ['T2 Ra1 M2 E2', 'T2 Ra1 M4 E2', 'T2 Ra1 M4 E3']
-                        errors.append(f'Allowed values for field <{headers[i]}> are: {value_list} for mesh item {csv_reader.line_num -1}')
+                        errors.append(f'Allowed values for field <{headers[i]}> are: {value_list} for mesh item {csv_reader.line_num -1 }')
                         encountered_error = True
                 elif headers[i] == 'color_names':
                     if checkColorNames(mesh[i]):
                         mesh_dict.update({headers[i]: mesh[i]})
                     else:
-                        errors.append(f'Please enter at least one color name for the field <{headers[i]}> for mesh item {csv_reader.line_num -1}')
+                        errors.append(f'Please enter at least one color name for the field <{headers[i]}> for mesh item {csv_reader.line_num -1 }')
                         encountered_error = True
                 else:
                     errors.append(f'Cannot parse field <{headers[i]}>. Permitted fields are : {permitted_fields}')
