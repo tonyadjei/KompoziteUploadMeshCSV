@@ -1,5 +1,5 @@
-# KompoziteUploadMeshCSV
-## Kompozite Technical Test for an internship in Backend Web Development Q1)
+## KompoziteUploadMeshCSV
+### Kompozite Technical Test for an internship in Backend Web Development Q1)
 
 ### Objectives: 
 - Create a serializable class (ie whose instances can easily be transformed into dictionaries) which
