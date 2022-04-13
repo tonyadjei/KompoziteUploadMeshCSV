@@ -119,4 +119,4 @@ def parse_csv_file(filename):
                     encountered_error = True
             if not encountered_error:
                 mesh_list.append(mesh_dict)
-    return mesh_list, errors
+    return mesh_list, list(set(errors))

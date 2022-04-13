@@ -32,12 +32,13 @@ class MeshView(APIView):
                         errors.append(f'There is already an existing mesh with id : <{mesh["id"]}>')
             if len(errors):
                 mesh_form = forms.CreateMeshFile()
-                return render(request, 'mesh/upload_mesh.html', {'errors': errors, 'form': mesh_form})     
+                return render(request, 'mesh/upload_mesh.html', {'errors': list(set(errors)), 'form': mesh_form})     
             else:
                 meshes = models.Mesh.objects.all()
                 meshes_serializer = MeshSerializer(meshes, many=True)
                 if len(meshes):
                     return Response({'count': len(meshes_serializer.data), 'data': meshes_serializer.data, 'message': 'All meshes have been successfully saved to the database.'})
+                
         else:
             mesh_form = forms.CreateMeshFile()
             return render(request, 'mesh/upload_mesh.html', {'message': 'Please upload a csv file.', 'form': mesh_form})
